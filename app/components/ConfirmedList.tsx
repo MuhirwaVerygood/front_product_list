@@ -5,10 +5,37 @@ import IconOrderConfirmed from "../../assets/images/icon-order-confirmed.svg";
 interface OrderListComponentProps{
     cartsList: ProductSchema[]
     totalAmount: string
+    setCartsList: React.Dispatch<React.SetStateAction<ProductSchema[]>>;
+    setConfirmed: React.Dispatch<React.SetStateAction<boolean>>
+    productList : ProductSchema[],
+    setProductList: React.Dispatch<React.SetStateAction<ProductSchema[]>>;
 }
 
-const ConfirmedList: React.FC<OrderListComponentProps> = ({cartsList, totalAmount}) => {
-  return (
+const ConfirmedList: React.FC<OrderListComponentProps> = ({cartsList, totalAmount,productList, setProductList, setCartsList, setConfirmed}) => {
+  
+    const startNewOrder = () => {
+        // Clone the product list to avoid mutating the original state directly
+        const updatedProductList = productList.map((product) => {
+          // Check if the product is in the cart and has a quantity greater than 0
+          const cartItem = cartsList.find(
+            (cartItem) => cartItem.productName === product.productName
+          );
+          if (cartItem && product.quantity > 0) {
+            // Reset the quantity to 0
+            return { ...product, quantity: 0 };
+          }
+          return product;
+        });
+      
+        // Update the state with the modified product list
+        setProductList(updatedProductList);
+        // Clear the cart list
+        setCartsList([]);
+        // Set the confirmed status to false
+        setConfirmed(false);
+      };
+      
+    return (
     <div className="w-[25%] rounded-[20px] pl-[2%] pt-[2%] absolute left-[35%] top-[20%] bg-white ">
     <div className="flex flex-col gap-[10px]">
       <Image src={IconOrderConfirmed} alt="Icon order confirmed" />
@@ -58,7 +85,7 @@ const ConfirmedList: React.FC<OrderListComponentProps> = ({cartsList, totalAmoun
         </div>
       </div>
     </div>
-    <button className='mx-auto px-8 border-none focus:border-none  bg-orange-600 mb-[5%] text-white w-[90%] py-2 rounded-[20px] mt-[5%]'>Start New Order</button>
+    <button onClick={startNewOrder} className='mx-auto px-8 border-none focus:border-none  bg-orange-600 mb-[5%] text-white w-[90%] py-2 rounded-[20px] mt-[5%]'>Start New Order</button>
   </div>
   )
 }

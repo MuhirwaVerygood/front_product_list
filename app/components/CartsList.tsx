@@ -125,7 +125,7 @@ const CartsList: React.FC<CartsListComponentProps> = ({
 
       {confirmed && (
         <div>
-            <ConfirmedList  cartsList={cartsList} totalAmount={totalAmount}/>
+            <ConfirmedList productList={productList } setProductList={setProductList} setConfirmed={ setConfirmed}  cartsList={cartsList} setCartsList={setCartsList} totalAmount={totalAmount}/>
         </div>
       )}
     </div>
