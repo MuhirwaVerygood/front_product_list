@@ -7,11 +7,12 @@ interface OrderListComponentProps{
     totalAmount: string
     setCartsList: React.Dispatch<React.SetStateAction<ProductSchema[]>>;
     setConfirmed: React.Dispatch<React.SetStateAction<boolean>>
+    confirmed: boolean
     productList : ProductSchema[],
     setProductList: React.Dispatch<React.SetStateAction<ProductSchema[]>>;
 }
 
-const ConfirmedList: React.FC<OrderListComponentProps> = ({cartsList, totalAmount,productList, setProductList, setCartsList, setConfirmed}) => {
+const  ConfirmedList: React.FC<OrderListComponentProps> = ({cartsList, totalAmount,productList, confirmed, setProductList, setCartsList, setConfirmed}) => {
   
     const startNewOrder = () => {
         // Clone the product list to avoid mutating the original state directly
@@ -36,7 +37,7 @@ const ConfirmedList: React.FC<OrderListComponentProps> = ({cartsList, totalAmoun
       };
       
     return (
-    <div className="w-[25%] rounded-[20px] pl-[2%] pt-[2%] absolute left-[35%] top-[20%] bg-white ">
+    <div className={`w-[25%] rounded-[20px] pl-[2%] pt-[2%] absolute left-[35%] top-[20%] bg-white `}>
     <div className="flex flex-col gap-[10px]">
       <Image src={IconOrderConfirmed} alt="Icon order confirmed" />
       <h1 className="font-bold text-[20px]">Order Confirmed</h1>

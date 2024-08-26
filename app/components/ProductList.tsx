@@ -106,7 +106,7 @@
     ]);
 
     const [cartsList, setCartsList] = useState<ProductSchema[]>([]);
-
+    const [confirmed, setConfirmed] = useState<boolean>(false)
     const incrementProductCount = (index: number) => {
         const updatedProducts = [...productLists];
 
@@ -196,7 +196,7 @@
         .toFixed(2);
 
     return (
-        <div className="w-full">
+        <div className={`w-full bg-pink-50`}>
         <h1 className="font-bold text-[30px]">Desserts</h1>
         <div className="flex flex-row">
             <div className="grid grid-cols-3 w-[70%]">
@@ -249,7 +249,7 @@
             <h1 className=" text-[20px] mb-3 font-bold text-orange-700">
                 Your Cart ({totalQuantity})
             </h1>
-            <CartsList cartsList={cartsList}  totalQuantity={totalQuantity} productList={productLists} setProductList={setProductLists} totalAmount={totalAmount} setCartsList={setCartsList}/>
+            <CartsList cartsList={cartsList} confirmed={confirmed}  setConfirmed={setConfirmed} totalQuantity={totalQuantity} productList={productLists} setProductList={setProductLists} totalAmount={totalAmount} setCartsList={setCartsList}/>
             </div>
         </div>
         </div>

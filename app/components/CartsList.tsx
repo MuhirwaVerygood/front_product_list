@@ -12,6 +12,8 @@ interface CartsListComponentProps {
   productList: ProductSchema[];
   setProductList: React.Dispatch<React.SetStateAction<ProductSchema[]>>;
   totalQuantity: number;
+  setConfirmed: React.Dispatch<React.SetStateAction<boolean>>
+  confirmed: boolean
 }
 const CartsList: React.FC<CartsListComponentProps> = ({
   cartsList,
@@ -20,8 +22,9 @@ const CartsList: React.FC<CartsListComponentProps> = ({
   productList,
   setProductList,
   totalQuantity,
+  confirmed, 
+  setConfirmed
 }) => {
-  const [confirmed, setConfirmed] = useState<boolean>(false);
 
   const RemoveFromCart = (caIt: ProductSchema) => {
     const productExistsInCart = cartsList.find(
@@ -122,7 +125,7 @@ const CartsList: React.FC<CartsListComponentProps> = ({
 
       {confirmed && (
         <div>
-            <ConfirmedList productList={productList } setProductList={setProductList} setConfirmed={ setConfirmed}  cartsList={cartsList} setCartsList={setCartsList} totalAmount={totalAmount}/>
+            <ConfirmedList confirmed={confirmed}  productList={productList } setProductList={setProductList} setConfirmed={ setConfirmed}  cartsList={cartsList} setCartsList={setCartsList} totalAmount={totalAmount}/>
         </div>
       )}
     </div>
