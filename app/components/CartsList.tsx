@@ -25,28 +25,25 @@ const CartsList: React.FC<CartsListComponentProps> = ({
 
   const RemoveFromCart = (caIt: ProductSchema) => {
     const productExistsInCart = cartsList.find(
-      (cartItem) => cartItem.productName === cartItem.productName
+      (cartItem) => cartItem.productName === caIt.productName
     );
-
+  
     if (productExistsInCart) {
       setCartsList((prev) =>
         prev.filter((item) => item.productName !== caIt.productName)
       );
     }
-
-    //check in the product list
-    const productsLists = [...productList];
-    const productExists = productsLists.find(
-      (p) => p.productName === caIt.productName
-    );
-    if (productExists) {
-      if (productExists.quantity > 0) {
-        productExists.quantity = 0;
+  
+    const updatedProductList = productList.map((product) => {
+      if (product.productName === caIt.productName) {
+        return { ...product, isClicked: false, quantity: 0};
       }
-      setProductList(productsLists);
-    }
+      return product;
+    });
+  
+    setProductList(updatedProductList);
   };
-
+  
   return (
     <div>
       {totalQuantity > 0 ? (

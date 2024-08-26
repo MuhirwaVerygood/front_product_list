@@ -22,7 +22,7 @@ const ConfirmedList: React.FC<OrderListComponentProps> = ({cartsList, totalAmoun
           );
           if (cartItem && product.quantity > 0) {
             // Reset the quantity to 0
-            return { ...product, quantity: 0 };
+            return { ...product, quantity: 0 , isClicked : false};
           }
           return product;
         });
