@@ -6,25 +6,39 @@ import Image from "next/image";
 interface CartsListComponentProps {
   cartsList: ProductSchema[];
   totalAmount: string;
-  setCartsList: React.Dispatch<React.SetStateAction<ProductSchema[]>>
+  setCartsList: React.Dispatch<React.SetStateAction<ProductSchema[]>>;
+  productList: ProductSchema[],
+  setProductList: React.Dispatch<React.SetStateAction<ProductSchema[]>>
 }
 const CartsList: React.FC<CartsListComponentProps> = ({
   cartsList,
   totalAmount,
-  setCartsList
+  setCartsList,
+  productList,
+  setProductList
 }) => {
 
 
     const RemoveFromCart= (caIt: ProductSchema)=>{
         const cartLists = [...cartsList]
         const productExistsInCart = cartsList.find((cartItem)=>cartItem.productName === cartItem.productName  )
-        
+
         if(productExistsInCart){
             setCartsList((prev) =>(
                 prev.filter(item=> item.productName !== caIt.productName)
             ))
         }
-       
+
+        
+        //check in the product list 
+        const productsLists = [...productList]
+        const productExists = productsLists.find(p=>p.productName === caIt.productName);
+        if(productExists){
+            if(productExists.quantity > 0){
+                productExists.quantity = 0;
+            }
+            setProductList(productsLists)
+        }       
     }
 
   return (

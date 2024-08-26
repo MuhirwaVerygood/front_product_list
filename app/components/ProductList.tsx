@@ -227,7 +227,7 @@ const ProductList: React.FC = () => {
           <h1 className=" text-[20px] mb-3 font-bold text-orange-700">
             Your Cart ({totalQuantity} items)
           </h1>
-          <CartsList cartsList={cartsList} totalAmount={totalAmount} setCartsList={setCartsList}/>
+          <CartsList cartsList={cartsList} productList={productLists} setProductList={setProductLists} totalAmount={totalAmount} setCartsList={setCartsList}/>
         </div>
       </div>
     </div>
