@@ -24,7 +24,6 @@ const CartsList: React.FC<CartsListComponentProps> = ({
   const [confirmed, setConfirmed] = useState<boolean>(false);
 
   const RemoveFromCart = (caIt: ProductSchema) => {
-    const cartLists = [...cartsList];
     const productExistsInCart = cartsList.find(
       (cartItem) => cartItem.productName === cartItem.productName
     );

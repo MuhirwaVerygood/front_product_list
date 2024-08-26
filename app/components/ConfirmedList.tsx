@@ -9,7 +9,7 @@ interface OrderListComponentProps{
 
 const ConfirmedList: React.FC<OrderListComponentProps> = ({cartsList, totalAmount}) => {
   return (
-    <div className="w-[25%] rounded-[20px] pl-[2%] pt-[3%] absolute left-[35%] top-[20%] bg-white ">
+    <div className="w-[25%] rounded-[20px] pl-[2%] pt-[2%] absolute left-[35%] top-[20%] bg-white ">
     <div className="flex flex-col gap-[10px]">
       <Image src={IconOrderConfirmed} alt="Icon order confirmed" />
       <h1 className="font-bold text-[20px]">Order Confirmed</h1>
@@ -58,6 +58,7 @@ const ConfirmedList: React.FC<OrderListComponentProps> = ({cartsList, totalAmoun
         </div>
       </div>
     </div>
+    <button className='mx-auto px-8 border-none focus:border-none  bg-orange-600 mb-[5%] text-white w-[90%] py-2 rounded-[20px] mt-[5%]'>Start New Order</button>
   </div>
   )
 }
