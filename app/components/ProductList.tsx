@@ -196,7 +196,7 @@
         .toFixed(2);
 
     return (
-        <div className={`w-full `}>
+        <div className={`w-full  `}>
         <h1 className="font-bold text-[30px]">Desserts</h1>
         <div className="flex lg:flex-row ss:flex-col">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 ss:grid-cols-1 md:w-[95%] lg:w-[70%] ss:w-full">
