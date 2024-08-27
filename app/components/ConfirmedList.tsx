@@ -37,7 +37,7 @@ const  ConfirmedList: React.FC<OrderListComponentProps> = ({cartsList, totalAmou
       };
       
     return (
-    <div className={`w-[25%] rounded-[20px] pl-[2%] pt-[2%] absolute left-[35%] top-[20%] bg-white `}>
+    <div className={`lg:w-[25%] ss:w-[80%] ss:mx-auto rounded-[20px] ss:pl-[5%] lg:pl-[2%] pt-[2%] absolute lg:left-[35%] top-[20%] bg-white `}>
     <div className="flex flex-col gap-[10px]">
       <Image src={IconOrderConfirmed} alt="Icon order confirmed" />
       <h1 className="font-bold text-[20px]">Order Confirmed</h1>
