@@ -198,18 +198,18 @@
     return (
         <div className={`w-full `}>
         <h1 className="font-bold text-[30px]">Desserts</h1>
-        <div className="flex flex-row">
-            <div className="grid grid-cols-3 w-[70%]">
+        <div className="flex lg:flex-row ss:flex-col">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 ss:grid-cols-1 md:w-[95%] lg:w-[70%] ss:w-full">
             {productLists.map((p, index) => {
                 return (
-                <div key={index} className="w-[95%] pt-[5%] cursor-pointer">
+                <div key={index} className="md:w-[95%] ss:w-[90%]  pt-[5%] cursor-pointer">
                     <Image
                     src={p.productImage}
                     alt={p.productDescription}
-                    className={p.isClicked ?" border-[2px] border-orange-500 rounded-lg  mt-4 mb-[-2%]": "rounded-lg mt-4 mb-[-2%] "}
+                    className={p.isClicked ?" ss:w-full border-[2px] border-orange-500 rounded-lg  mt-4 mb-[-2%]": "ss:w-full rounded-lg mt-4 mb-[-2%] "}
                     />
                     {p.quantity > 0 ? (
-                    <button className="flex flex-row  bg-orange-700 gap-10 items-center px-11 py-2 rounded-[20px] relative top-[-4%]   border-none left-[20%]">
+                    <button className="flex flex-row  bg-orange-700 gap-10 items-center lg:px-8 lg:py-2 md:py-3 ss:py-2 ss:px-16  md:px-16  rounded-[20px] relative ss:top-[-2%] sm:top-[-1%]  md:top-[-4%]   border-none  ss:mx-auto   ">
                         <Image
                         src={RemoveIcon}
                         className="border-orange-300 border-[1px] w-[20px] h-[20px]  p-1 px-1 rounded-[50%]"
@@ -226,7 +226,7 @@
                     </button>
                     ) : (
                     <button
-                        className="bg-white px-8 py-2 flex flex-row rounded-[20px] relative top-[-4%] border-[1px] border-orange-900 left-[20%]"
+                        className=" bg-white lg:px-8 lg:py-2 md:py-3 ss:py-2 ss:px-16  md:px-16 flex flex-row rounded-[20px] relative ss:top-[-2%] sm:top-[-1%]  md:top-[-4%]   border-[1px] border-orange-900 ss:mx-auto"
                         onClick={() => addToCart(p, index)}
                     >
                         <Image
@@ -245,7 +245,7 @@
             })}
             </div>
 
-            <div className="bg-white w-[25%] pt-[2%] pl-[2%] rounded-lg h-fit">
+            <div className="bg-white md:w-[50%] lg:w-[25%] md:mt-5 ss:w-[90%] md:pt-[2%] ss:pt-[5%] ss:mt-[5%] md:mt-0 pl-[2%] rounded-lg h-fit">
             <h1 className=" text-[20px] mb-3 font-bold text-orange-700">
                 Your Cart ({totalQuantity})
             </h1>
